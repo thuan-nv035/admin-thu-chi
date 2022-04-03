@@ -3,18 +3,17 @@ import "./home.css";
 import Navbar from "../components/Navbar/Navbar";
 import Reports from "../components/Reports/Reports";
 import Sidebar from "../components/Sidebar/Sidebar";
-import SetFilter from "../components/SetFilter/SetFilter";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <div>
-      {/* <SetFilter  /> */}
+    <Router>
       <Navbar />
       <div className="container">
         <Sidebar />
         <Reports />
       </div>
-    </div>
+    </Router>
   );
 };
 

@@ -1,0 +1,113 @@
+.button-filter {
+  margin-right: 20px;
+  margin-left: 15px;
+  border: 1px solid #dfdfdf;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close {
+    width: 40px;
+    border-radius: 50%;
+    background: #4264d0;
+    color: #fff;
+    position: absolute;
+    margin-left: -32px;
+    margin-top: 287px;
+}
+.menu-filter {
+  position: fixed;
+  right: -352px;
+  top: 0;
+  width: 300px;
+  height: 100vh;
+  padding: 20px;
+  z-index: 99;
+  background: #fff;
+  box-shadow: var(--box-shadow);
+  transition: right 0.5s var(--transition-cubic);
+  /* display: none; */
+}
+
+.menu-filter.active {
+    right: 0;
+}
+
+.menu-filter h3 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 25px;
+  color: #2cb3a5;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.time h4 {
+  margin-top: 15px;
+  /* margin-bottom: 15px; */
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #333333;
+}
+
+.time-start h5,
+.time-end h5 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #666666;
+  padding-bottom: 8px;
+  padding-top: 15px;
+}
+
+.time-start input,
+.time-end input {
+  width: 300px;
+  height: 35px;
+  background: #fbfbfc;
+  border: 1px solid #ededed;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.calendar {
+  width: 300px;
+  height: 280px;
+  background: #ffffff;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 9px;
+  margin-top: 2px;
+}
+
+.button-submit {
+  display: flex;
+  margin-top: 40px;
+  justify-content: space-around;
+  border-top: 1px solid #f0f0f0;
+  /* box-sizing: border-box; */
+  /* box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05); */
+}
+
+.button-submit-items-1 {
+  margin-top: 10px;
+  background: #ffffff;
+  border: 1px solid #f27e7c;
+  border-radius: 5px;
+  align-items: center;
+  padding: 5px 30px;
+  cursor: pointer;
+}
+
+.button-submit-items-2 {
+  margin-top: 10px;
+  background: #2cb3a5;
+  border-radius: 5px;
+  align-items: center;
+  padding: 5px 20px;
+  color: #fff;
+  cursor: pointer;
+}

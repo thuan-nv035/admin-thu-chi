@@ -4,127 +4,61 @@ import {
   ChevronRightOutlined,
   ReceiptOutlined,
   SearchOutlined,
-  FilterListOutlined,
 } from "@material-ui/icons";
 import { DataGrid } from "@mui/x-data-grid";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import SetFilter from "../SetFilter/SetFilter";
+import Payment from "../Payment/Payment";
+import { rowstable } from "../../data";
+import { rowstable2 } from "../../data";
 
 const Reports = () => {
-  const [filter, setFilter] = useState(false);
-
-  const showFilter = () => setFilter(!filter);
-
   const columns = [
     { field: "date", headerName: "Ngày đặt", width: 180 },
     { field: "username", headerName: "Tên bệnh nhân", width: 150 },
     { field: "birthday", headerName: "Ngày sinh", width: 150 },
     { field: "gender", headerName: "Giới tính", width: 150 },
-    { field: "total", headerName: "Tổng tiền", width: 150 },
-    { field: "action", headerName: "Thao tác", width: 150 },
-  ];
-
-  const rows = [
+    { field: "total", headerName: "Tổng tiền", width: 250 },
     {
-      id: 1,
-      date: "9-40 ngày 12/08/2021",
-      username: "Cao Việt Bách",
-      birthday: "31/12/2000",
-      gender: "Nam",
-      total: "2520 000 đ",
-      action: "Thanh toán",
-    },
-    {
-      id: 2,
-      date: "9-40 ngày 12/08/2021",
-      username: "Cao Việt Bách",
-      birthday: "31/12/2000",
-      gender: "Nam",
-      total: "2120 000 đ",
-      action: "Thanh toán",
-    },
-    {
-      id: 3,
-      date: "9-40 ngày 12/08/2021",
-      username: "Cao Việt Bách",
-      birthday: "31/12/2000",
-      gender: "Nữ",
-      total: "220 000 đ",
-      action: "Thanh toán",
-    },
-    {
-      id: 4,
-      date: "9-40 ngày 12/08/2021",
-      username: "Cao Việt Bách",
-      birthday: "31/12/2000",
-      gender: "Nam",
-      total: "220 000 đ",
-      action: "Thanh toán",
-    },
-    {
-      id: 5,
-      date: "9-40 ngày 12/08/2021",
-      username: "Cao Việt Bách",
-      birthday: "31/12/2000",
-      gender: "Nữ",
-      total: "1220 000 đ",
-      action: "Thanh toán",
-    },
-    {
-      id: 6,
-      date: "9-40 ngày 12/08/2021",
-      username: "Cao Việt Bách",
-      birthday: "31/12/2000",
-      gender: "Nữ",
-      total: "2220 000 đ",
-      action: "Đã Thanh toán",
-    },
-    {
-      id: 7,
-      date: "9-40 ngày 12/08/2021",
-      username: "Cao Việt Bách",
-      birthday: "31/12/2000",
-      gender: "Nam",
-      total: "220 000 đ",
-      action: "Thanh toán",
-    },
-    {
-      id: 8,
-      date: "9-40 ngày 12/08/2021",
-      username: "Cao Việt Bách",
-      birthday: "31/12/2000",
-      gender: "Nam",
-      total: "2240 000 đ",
-      action: "Thanh toán",
-    },
-    {
-      id: 9,
-      date: "9-40 ngày 12/08/2021",
-      username: "Cao Việt Bách",
-      birthday: "31/12/2000",
-      gender: "Nữ",
-      total: "5220 000 đ",
-      action: "Đã Thanh toán",
-    },
-    {
-      id: 10,
-      date: "9-40 ngày 12/08/2021",
-      username: "Cao Việt Bách",
-      birthday: "31/12/2000",
-      gender: "Nữ",
-      total: "220 000 đ",
-      action: "Thanh toán",
-    },
-    {
-      id: 11,
-      date: "9-40 ngày 12/08/2021",
-      username: "Cao Việt Bách",
-      birthday: "31/12/2000",
-      gender: "Nam",
-      total: "220 000 đ",
-      action: "Thanh toán",
+      field: "action",
+      headerName: "Thao tác",
+      width: 150,
+      renderCell: (params) => {
+        return (
+          <>
+            <Payment />
+          </>
+        );
+      },
     },
   ];
 
+  const columns2 = [
+    { field: "date", headerName: "Ngày đặt", width: 180 },
+    { field: "username", headerName: "Tên bệnh nhân", width: 150 },
+    { field: "birthday", headerName: "Ngày sinh", width: 150 },
+    { field: "gender", headerName: "Giới tính", width: 100 },
+    { field: "total", headerName: "Thực thu", width: 130 },
+    { field: "collector", headerName: "Người thu", width: 150 },
+    {
+      field: "action",
+      headerName: "Thao tác",
+      width: 150,
+      renderCell: (params) => {
+        return (
+          <>
+            <button className="button-thu">Phiếu thu</button>
+          </>
+        );
+      },
+    },
+  ];
+
+  const [toggleState, setToggleState] = useState(1);
+
+  const toggleTab = (index) => {
+    setToggleState(index);
+  };
   return (
     <>
       <div className="wrapper">
@@ -144,8 +78,22 @@ const Reports = () => {
         </div>
         <div className="toggle">
           <div className="payments">
-            <div className="payments-item">Chưa thanh toán</div>
-            <div className="payments-item">Đã thanh toán</div>
+            <div
+              className={
+                toggleState === 1 ? "payments-item active" : "payments-item"
+              }
+              onClick={() => toggleTab(1)}
+            >
+              Chưa thanh toán
+            </div>
+            <div
+              className={
+                toggleState === 2 ? "payments-item active" : "payments-item"
+              }
+              onClick={() => toggleTab(2)}
+            >
+              Đã thanh toán
+            </div>
           </div>
           <div className="search-filter">
             <div className="search">
@@ -155,18 +103,29 @@ const Reports = () => {
               />
               <SearchOutlined className="icons-search" />
             </div>
-            <div className="filter">
-              <FilterListOutlined onClick={showFilter} />
-            </div>
+            <SetFilter />
           </div>
         </div>
-        <div style={{ height: 400, width: "94.5%", paddingLeft: "20px" }}>
+        <div
+          className={toggleState === 1 ? "table  active" : "table"}
+          style={{ height: 370, width: "94.5%", paddingLeft: "20px" }}
+        >
           <DataGrid
-            rows={rows}
+            rows={rowstable}
             columns={columns}
             pageSize={5}
             rowsPerPageOptions={[5]}
-            // checkboxSelection
+          />
+        </div>
+        <div
+          className={toggleState === 2 ? "table  active" : "table"}
+          style={{ height: 370, width: "94.5%", paddingLeft: "20px" }}
+        >
+          <DataGrid
+            rows={rowstable2}
+            columns={columns2}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
           />
         </div>
       </div>

@@ -1,3 +1,6 @@
+.wrapper {
+  margin-left: 265px;
+}
 .navigation {
   display: flex;
   width: 79vw;
@@ -77,6 +80,19 @@
   cursor: pointer;
 }
 
+.payments-item.active {
+  background: #4264d0;
+  color: #fff;
+}
+
+.table {
+  display: none;
+}
+
+.table.active {
+  display: block;
+}
+
 .search-filter {
   display: flex;
 }
@@ -117,6 +133,15 @@
   cursor: pointer;
 }
 
+/* .action {
+  border: none;
+  width: 115px;
+  height: 35px;
+  background: #4264d0;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+} */
 
 /* .menu-filter {
   background-color: #060b26;
@@ -129,3 +154,14 @@
   right: -100%;
   transition: 850ms;
 } */
+
+.button-thu {
+  width: 115px;
+  height: 35px;
+  left: 1304px;
+  top: 316px;
+  background: #2cb3a5;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+}

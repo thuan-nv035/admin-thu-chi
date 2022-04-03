@@ -6,7 +6,10 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="left">
-        <img src="" alt="" />
+        <img
+          src="https://scontent.fhan14-2.fna.fbcdn.net/v/t1.15752-9/cp0/267030664_460415662292871_8469608887264346991_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=ae9488&_nc_ohc=Nkn8pv6Qfc8AX-Uj6pA&_nc_ht=scontent.fhan14-2.fna&oh=03_AVL2ROdi6Ndx3uUXKzN0xSzrxOMNboa02PIhN_tkfptpFw&oe=61E39279"
+          alt=""
+        />
         <a href="/">CIS Dashboard</a>
       </div>
       <div className="center">
